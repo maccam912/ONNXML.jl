@@ -107,8 +107,37 @@ hash(v::TypeProto_Tensor) = ProtoBuf.protohash(v)
 isequal(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoisequal(v1, v2)
 ==(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoeq(v1, v2)
 
+mutable struct TypeProto_Sequence <: ProtoType
+    elem_type::Int32
+    TypeProto_Tensor(; kwargs...) = (o=new(); fillunset(o); isempty(kwargs) || ProtoBuf._protobuild(o, kwargs); o)
+end
+hash(v::TypeProto_Tensor) = ProtoBuf.protohash(v)
+isequal(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoisequal(v1, v2)
+==(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoeq(v1, v2)
+
+mutable struct TypeProto_Map <: ProtoType
+    key_type::Int32
+    value_type::Int32
+    TypeProto_Tensor(; kwargs...) = (o=new(); fillunset(o); isempty(kwargs) || ProtoBuf._protobuild(o, kwargs); o)
+end
+hash(v::TypeProto_Tensor) = ProtoBuf.protohash(v)
+isequal(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoisequal(v1, v2)
+==(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoeq(v1, v2)
+
+mutable struct TypeProto_Opaque <: ProtoType
+    domain::AbstractString
+    name::AbstractString
+    TypeProto_Tensor(; kwargs...) = (o=new(); fillunset(o); isempty(kwargs) || ProtoBuf._protobuild(o, kwargs); o)
+end
+hash(v::TypeProto_Tensor) = ProtoBuf.protohash(v)
+isequal(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoisequal(v1, v2)
+==(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoeq(v1, v2)
+
 mutable struct TypeProto <: ProtoType
     tensor_type::TypeProto_Tensor
+    sequence_type::TypeProto_Sequence
+    map_type::TypeProto_Map
+    opaque_type::TypeProto_Opaque
     TypeProto(; kwargs...) = (o=new(); fillunset(o); isempty(kwargs) || ProtoBuf._protobuild(o, kwargs); o)
 end #mutable struct TypeProto
 const __oneofs_TypeProto = Int[1]
