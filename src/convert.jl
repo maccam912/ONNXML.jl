@@ -27,7 +27,7 @@ end
 """
 Convert an OperatorSetIdProto to Dict.
 """
-function convert_model(model::ONNX.Proto.OperatorSetIdProto)
+function convert_model(model::ONNXML.Proto.OperatorSetIdProto)
     a = Dict{Symbol, Any}()
     fields = [:domain, :version]
     for ele in fields
@@ -39,7 +39,7 @@ end
 """
 Convert a StringStringEntryProto to Dict.
 """
-function convert_model(model::ONNX.Proto.StringStringEntryProto)
+function convert_model(model::ONNXML.Proto.StringStringEntryProto)
     a = Dict{Symbol, Any}()
     fields = [:key, :value]
     for ele in fields
