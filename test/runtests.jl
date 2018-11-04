@@ -1,9 +1,9 @@
-using ONNX, Flux, ProtoBuf
+using ONNXML, Flux, ProtoBuf
 using Base.Test
 
 include("ops_tests.jl")
 
-@testset "ONNX" begin
+@testset "ONNXML" begin
 
 include("conversions.jl")
 include("constant.jl")
