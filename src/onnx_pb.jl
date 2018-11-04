@@ -109,29 +109,29 @@ isequal(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoisequal(v1, 
 
 mutable struct TypeProto_Sequence <: ProtoType
     elem_type::Int32
-    TypeProto_Tensor(; kwargs...) = (o=new(); fillunset(o); isempty(kwargs) || ProtoBuf._protobuild(o, kwargs); o)
+    TypeProto_Sequence(; kwargs...) = (o=new(); fillunset(o); isempty(kwargs) || ProtoBuf._protobuild(o, kwargs); o)
 end
-hash(v::TypeProto_Tensor) = ProtoBuf.protohash(v)
-isequal(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoisequal(v1, v2)
-==(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoeq(v1, v2)
+hash(v::TypeProto_Sequence) = ProtoBuf.protohash(v)
+isequal(v1::TypeProto_Sequence, v2::TypeProto_Sequence) = ProtoBuf.protoisequal(v1, v2)
+==(v1::TypeProto_Sequence, v2::TypeProto_Sequence) = ProtoBuf.protoeq(v1, v2)
 
 mutable struct TypeProto_Map <: ProtoType
     key_type::Int32
     value_type::Int32
-    TypeProto_Tensor(; kwargs...) = (o=new(); fillunset(o); isempty(kwargs) || ProtoBuf._protobuild(o, kwargs); o)
+    TypeProto_Map(; kwargs...) = (o=new(); fillunset(o); isempty(kwargs) || ProtoBuf._protobuild(o, kwargs); o)
 end
-hash(v::TypeProto_Tensor) = ProtoBuf.protohash(v)
-isequal(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoisequal(v1, v2)
-==(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoeq(v1, v2)
+hash(v::TypeProto_Map) = ProtoBuf.protohash(v)
+isequal(v1::TypeProto_Map, v2::TypeProto_Map) = ProtoBuf.protoisequal(v1, v2)
+==(v1::TypeProto_Map, v2::TypeProto_Map) = ProtoBuf.protoeq(v1, v2)
 
 mutable struct TypeProto_Opaque <: ProtoType
     domain::AbstractString
     name::AbstractString
-    TypeProto_Tensor(; kwargs...) = (o=new(); fillunset(o); isempty(kwargs) || ProtoBuf._protobuild(o, kwargs); o)
+    TypeProto_Opaque(; kwargs...) = (o=new(); fillunset(o); isempty(kwargs) || ProtoBuf._protobuild(o, kwargs); o)
 end
-hash(v::TypeProto_Tensor) = ProtoBuf.protohash(v)
-isequal(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoisequal(v1, v2)
-==(v1::TypeProto_Tensor, v2::TypeProto_Tensor) = ProtoBuf.protoeq(v1, v2)
+hash(v::TypeProto_Opaque) = ProtoBuf.protohash(v)
+isequal(v1::TypeProto_Opaque, v2::TypeProto_Opaque) = ProtoBuf.protoisequal(v1, v2)
+==(v1::TypeProto_Opaque, v2::TypeProto_Opaque) = ProtoBuf.protoeq(v1, v2)
 
 mutable struct TypeProto <: ProtoType
     tensor_type::TypeProto_Tensor
